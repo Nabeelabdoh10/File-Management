@@ -1,6 +1,6 @@
 import java.util.HashMap;
 import java.util.Scanner;
-public class versions {
+public class FileVersion {
         public static void main(String[] args) {
             HashMap<String, Integer> map = new HashMap<>();
             Scanner scanner = new Scanner(System.in);
