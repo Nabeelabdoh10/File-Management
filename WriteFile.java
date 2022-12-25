@@ -3,7 +3,7 @@ import java.io.File;
 import java.sql.*;
 
 
-public class writeFile {
+public class WriteFile {
     public static void appendAndWriteToFile(File fileName,StringBuilder data,int version) {
 
         try {
