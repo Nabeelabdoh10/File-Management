@@ -4,19 +4,7 @@ import java.sql.*;
 
 
 public class writeFile {
-    public static void createAndWriteToFile(String fileName,StringBuilder data) {
-        try {
-            // Create a new file object
-            File file = new File(fileName);
-            PrintWriter writer = new PrintWriter(file);
-            writer.println(data);
-            // Close the PrintWriter object to ensure the data is written to the file
-            writer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public static void appendAndWriteToFile(String fileName,StringBuilder data) {
+    public static void appendAndWriteToFile(File fileName,StringBuilder data,int version) {
 
         try {
             // Create a FileWriter and a BufferedWriter
@@ -26,11 +14,13 @@ public class writeFile {
             // Close the writers
             bufferedWriter.close();
             writer.close();
-        } catch (IOException e) {
+            String type= FileSystem.extension(fileName.getAbsolutePath());
+            FileToDatabase.exportFile(fileName.getName(),type,fileName.length(),version);
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }
-    public static void writer(String fileName,StringBuilder Data) throws SQLException, IOException {
+    public static void writer(String fileName,StringBuilder Data,int version) throws SQLException, IOException {
         // Create a File object for the file you want to read
         File file = new File(fileName);
 
@@ -42,7 +32,7 @@ public class writeFile {
         try {
             FileReader reader = new FileReader(file);
             stmt = conn.createStatement();
-            rs = stmt.executeQuery("SELECT  data  FROM files WHERE name = '" + fileName + "'");
+            rs = stmt.executeQuery("SELECT  data  FROM files WHERE name = '" + FileEncryptor.encrypt(fileName) + "'");
             byte[] data = new byte[0];
             if (rs.next()) {
                 Blob fileData = rs.getBlob("data");
@@ -51,11 +41,13 @@ public class writeFile {
             }
             int c;
             String oldData=new String(data);
+
             // Check if the data is equal to null
             if (oldData.toString().equals("")) {
-                createAndWriteToFile(fileName,Data);
+                //createAndWriteToFile(file,Data);
+                appendAndWriteToFile(file,Data,version);
             } else {
-                appendAndWriteToFile(fileName,Data);
+                appendAndWriteToFile(file,Data,version);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,17 +56,5 @@ public class writeFile {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    public static void main(String[] args) throws IOException, SQLException {
-
-        System.out.print("\nWrite in   file, please enter \"<exit>\" in new line To end writing\n" + "  >>>   ");
-        StringBuilder sb = new StringBuilder();
-        String writeInFile = br.readLine();
-        while( !writeInFile.equals("<exit>") )
-        {
-            sb.append(writeInFile+"\n");
-            writeInFile = br.readLine();
-        }
-        writeFile.writer("Test.txt",sb);
-
-    }
+    
 }
