@@ -139,3 +139,29 @@ c. Reader: Read only.
 
 8. 90% of the users are reader users.
 
+## The main objective in the project 
+Is to apply all principles, methodologies, rules
+and best practices in software development.
+- Class digram( )
+- use case digram( )
+
+- Functional requirements:
+    1. File reposisory (  )
+    2. File classification (  )
+    3. Version control for the files (  )
+    4. Encryption feature (  )
+    ...
+- Non functional requirements:
+  1. User authentication and authorization (  )
+  2. System scalability (  )
+  3. System availability (  )
+  4. Parallel request (  )
+  ...
+  
+  - Clean code and Code conversion ( )
+  - Class quality, OOP and SOLID principles ( )
+  - Design patterns ()
+  - Logging ( )
+  - Exception handling ( )
+  - Concrete architecture ( )
+
