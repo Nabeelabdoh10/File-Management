@@ -1,7 +1,5 @@
 import java.io.*;
 import java.sql.*;
-import java.util.Properties;
-
 public class FileToDatabase {
 
 
@@ -20,7 +18,7 @@ public class FileToDatabase {
         return conn;
     }
 
-    public static void importFile(String pathFileName) throws SQLException, IOException { //not complete
+    public static void importFile(String pathFileName , int version) throws SQLException, IOException { //not complete
         Connection conn = null;
         conn = connection();
         ResultSet rs = null;
@@ -28,22 +26,19 @@ public class FileToDatabase {
 
         try {
             // Step 3: Execute the SELECT query
-             stmt = conn.createStatement();
-             rs = stmt.executeQuery("SELECT name , data  FROM files WHERE name = '" + FileEncryptor.encrypt(pathFileName) + "'and version =?");
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT name , data  FROM files WHERE name = '" + FileEncryptor.encrypt(pathFileName)+"'AND Version = '"+version+"'");
 
             // Check if the file exists in the database
             if (rs.next()) {
                 String fileName = rs.getString("name");
-                Integer version=rs.getInt("version");
                 Blob fileData = rs.getBlob("data");
                 byte[] data = fileData.getBytes(1, (int) fileData.length());
                 System.out.println("File name: " + FileEncryptor.decrypt(fileName));
                 System.out.println("File data: \n" + new String(data));
 
             }
-            else {
-                System.out.println("kkk");
-            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -77,7 +72,7 @@ public class FileToDatabase {
             System.out.println("Error creating statement object: " + e.getMessage());
         }
 
-       // Step 3: Set the values of the parameters
+        // Step 3: Set the values of the parameters
         try {
             pstmt.setString(1, FileEncryptor.encrypt(fileName));
         } catch (SQLException e) {
@@ -93,7 +88,7 @@ public class FileToDatabase {
             System.out.println("Error setting parameter 2: " + e.getMessage());
         }
         //-----+
-       // pstmt.setString(3, filePath);
+        // pstmt.setString(3, filePath);
         pstmt.setString(3, fileType);
         pstmt.setLong(4, fileSize);
         pstmt.setInt(5,version);
@@ -106,12 +101,12 @@ public class FileToDatabase {
         }
     }
 
-    public static void deleteFile(String fileName) throws IOException {
+    public static void deleteFile(String fileName , int version ) throws IOException {
         Connection conn = null;
         conn = connection();
         // Step 2: Delete
         PreparedStatement pstmt = null;
-        String sql = "DELETE FROM files WHERE name=?";
+        String sql = "DELETE FROM files WHERE name = ? and Version =?";
         try {
             pstmt = conn.prepareStatement(sql);
         } catch (SQLException e) {
@@ -122,9 +117,11 @@ public class FileToDatabase {
         try {
             //pstmt.setInt(1, fileId);
             pstmt.setString(1, FileEncryptor.encrypt(fileName));
+            pstmt.setInt(2, version);
         } catch (SQLException e) {
             System.out.println("Error setting parameter: " + e.getMessage());
         }
+
 
         // Step 4: Execute the query
         try {
@@ -142,30 +139,30 @@ public class FileToDatabase {
         Statement stmt = null;
 
         try {
-        // Create a statement
-        stmt = conn.createStatement();
+            // Create a statement
+            stmt = conn.createStatement();
 
-        // Execute a SELECT statement to retrieve the file information
-         rs = stmt.executeQuery("SELECT * FROM files");
+            // Execute a SELECT statement to retrieve the file information
+            rs = stmt.executeQuery("SELECT * FROM files");
 
-        // Iterate through the ResultSet object and retrieve the file information
-        while (rs.next()) {
+            // Iterate through the ResultSet object and retrieve the file information
+            while (rs.next()) {
 
-            String name = rs.getString("name");
-            String version = rs.getString("version");
-            String type = rs.getString("type");
-            long size = rs.getLong("size");
-            // Print the file information to the console
-            System.out.println( " File Name: " + FileEncryptor.decrypt(name) + "    , File Version: " + version + "    , File Type: " + type +"    File Size: " + size);
-            System.out.println();
+                String name = rs.getString("name");
+                String version = rs.getString("version");
+                String type = rs.getString("type");
+                long size = rs.getLong("size");
+                // Print the file information to the console
+                System.out.println( " File Name: " + FileEncryptor.decrypt(name) + "    , File Version: " + version + "    , File Type: " + type +"    File Size: " + size);
+                System.out.println();
+            }
+
+            // Close the connection
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        // Close the connection
-        conn.close();
-    } catch (Exception e) {
-        e.printStackTrace();
     }
-}
 
     public static boolean containingDB(String fileName) throws IOException, SQLException {
         Connection conn = null;
@@ -179,16 +176,6 @@ public class FileToDatabase {
         return true;
     }
 
-    public static void main(String[] args) throws Exception {
-
-        // test
-
-        //exportFile("Test2.txt" ,"txt",44,0);
-        //deleteFile( "file1.txt");
-        //importFile("Test.txt");
-        //getFileInfo();
-
-
-    }
+    
 
 }
