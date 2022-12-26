@@ -152,6 +152,7 @@ and best practices in software development.
 - Class digram(
 ![Classdigram.jpg](https://github.com/Nabeelabdoh10/File-Management/blob/main/class%20digram.jpg )
 - use case digram( )
+![use case](https://user-images.githubusercontent.com/75255366/209539441-1e7c5122-2966-4f42-82c0-0d36659051c0.jpg)
 
 - Functional requirements:
     1. File reposisory (  )
