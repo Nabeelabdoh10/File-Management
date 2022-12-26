@@ -3,7 +3,7 @@ package CleanCod;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class RolBacke {
+public class RollBack {
 
     public static void rollBack(String fileName,int version) throws IOException, SQLException {
         Delete.deleteFile(fileName , version);
