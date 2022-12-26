@@ -149,14 +149,13 @@ c. Reader: Read only.
 ## The main objective in the project 
 Is to apply all principles, methodologies, rules
 and best practices in software development.
-- Class digram( )
+- Class digram(
+![Classdigram.jpg] https://github.com/Nabeelabdoh10/File-Management/blob/main/class%20digram.jpg )
 - use case digram( )
 
 - Functional requirements:
     1. File reposisory (  )
     2. File classification (  )
-    ![image](https://user-images.githubusercontent.com/75255366/209519251-660e6333-756f-498e-aa1b-40597c6170db.png)
-
     3. Version control for the files (  )
     4. Encryption feature (  )
     ...
