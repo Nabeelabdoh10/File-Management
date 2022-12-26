@@ -161,7 +161,9 @@ and best practices in software development.
     4. Version control for the files ( 
     ![RollBack.jpg](https://github.com/Nabeelabdoh10/File-Management/blob/main/pic/RollBack.png)
     )
-    5. Encryption feature (  )
+    5. Encryption feature ( 
+    ![FileEncryptor.png](https://github.com/Nabeelabdoh10/File-Management/blob/main/pic/FileEncryptor.png)
+    )
     ...
 - Non functional requirements:
   1. User authentication and authorization (  )
