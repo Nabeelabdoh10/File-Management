@@ -166,7 +166,7 @@ and best practices in software development.
     )
     ...
 - Non functional requirements:
-  1. User authentication and authorization (  )
+  1. User authentication and authorization ![FileEncryptor.png](https://github.com/Nabeelabdoh10/File-Management/blob/main/pic/Auth.png)
   2. System scalability (  )
   3. System availability (  )
   4. Parallel request (  )
