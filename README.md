@@ -155,6 +155,8 @@ and best practices in software development.
 - Functional requirements:
     1. File reposisory (  )
     2. File classification (  )
+    ![image](https://user-images.githubusercontent.com/75255366/209519251-660e6333-756f-498e-aa1b-40597c6170db.png)
+
     3. Version control for the files (  )
     4. Encryption feature (  )
     ...
