@@ -167,15 +167,13 @@ and best practices in software development.
     ...
 - Non functional requirements:
   1. User authentication and authorization ![FileEncryptor.png](https://github.com/Nabeelabdoh10/File-Management/blob/main/pic/Auth.png)
-  2. System scalability (  )
-  3. System availability (  )
-  4. Parallel request (  )
+  2. System scalability & System availability.
+  
   ...
   
-  - Clean code and Code conversion ( )
-  - Class quality, OOP and SOLID principles ( )
-  - Design patterns ()
-  - Logging ( )
-  - Exception handling ( )
-  - Concrete architecture ( )
+  - Clean code and Code conversion ( in General Code )
+  - Class quality, OOP  (in General Code )
+  - Design patterns -SOLID principles- ( single respornobitiy principle in all classes in code ,singleton one connection in database )
+  - Exception handling ( in General Code)
+ 
 
