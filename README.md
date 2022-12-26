@@ -150,7 +150,7 @@ c. Reader: Read only.
 Is to apply all principles, methodologies, rules
 and best practices in software development.
 - Class digram(
-![Classdigram.jpg] https://github.com/Nabeelabdoh10/File-Management/blob/main/class%20digram.jpg )
+![Classdigram.jpg](https://github.com/Nabeelabdoh10/File-Management/blob/main/class%20digram.jpg )
 - use case digram( )
 
 - Functional requirements:
