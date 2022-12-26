@@ -1,3 +1,6 @@
+# Check the clean code !!!!!!!!!!!!!!! ( https://github.com/Nabeelabdoh10/File-Management/tree/main/CleanCod)
+# check the video run the system !!!!! (https://github.com/Nabeelabdoh10/File-Management/blob/main/File%20Management%20System.mp4) 
+this link vedio too ( https://drive.google.com/file/d/1IamkunM9pTp2Rxg0YQbiRvT7w1a3y4U1/view?usp=sharing)
 # Introduction
 The technical problem I tackled in my project is to find a way to find
 and manage my old files and make enough space. Designing a system
